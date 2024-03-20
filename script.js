@@ -37,3 +37,19 @@ const modal = (() => {
 
   return { open, close, clearValues };
 })();
+
+const formValidator = (() => {
+  const userInputTextValidation = (inputType, errorLabel, errorMessage) => {
+    if (inputType.value === "" || inputType.value.trim() === "") {
+      errorLabel.textContent = errorMessage;
+      errorLabel.style.color = "red";
+      return false;
+    } else {
+      errorLabel.textContent = "✓";
+      errorLabel.style.color = "green";
+      return true;
+    }
+  };
+
+  return { userInputTextValidation };
+})();
