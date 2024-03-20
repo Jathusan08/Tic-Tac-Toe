@@ -53,3 +53,64 @@ const formValidator = (() => {
 
   return { userInputTextValidation };
 })();
+
+(function startTicTacToeGame() {
+  const submitbtn = document.querySelector(".submit-button");
+  const nameInput = document.getElementById("name");
+  const nameInputError = document.querySelector(".name > .error");
+
+  let player = null;
+  let computer = null;
+
+  modal.open();
+
+  nameInput.addEventListener("input", () => {
+    formValidator.userInputTextValidation(
+      nameInput,
+      nameInputError,
+      "Name required"
+    );
+  });
+
+  const submitButtonEvent = () => {
+    const selectedRadioButton = document.querySelector(
+      'input[name="option"]:checked'
+    );
+
+    if (
+      formValidator.userInputTextValidation(
+        nameInput,
+        nameInputError,
+        "Name required"
+      )
+    ) {
+      document.querySelector(".playerName").textContent = nameInput.value;
+      document.querySelector(".player-choice").textContent =
+        selectedRadioButton.value;
+      document.querySelector(".computer-choice").textContent =
+        selectedRadioButton.value === "X" ? "O" : "X";
+      document.querySelector(".gameState").textContent = "Player Turn";
+      modal.close();
+      modal.clearValues();
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  submitbtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (submitButtonEvent()) {
+      player = createParticipant(
+        document.querySelector(".playerName").textContent,
+        document.querySelector(".player-choice").textContent
+      );
+      computer = createParticipant(
+        "Computer",
+        document.querySelector(".computer-choice").textContent
+      );
+      console.log(player.getName(), player.getSymbol());
+      console.log(computer.getName(), computer.getSymbol());
+    }
+  });
+})();
