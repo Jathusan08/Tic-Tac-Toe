@@ -15,3 +15,25 @@ function createParticipant(name, symbol) {
     getScore,
   };
 }
+
+const modal = (() => {
+  const modal = document.querySelector(".modal");
+  const nameInput = document.getElementById("name");
+  const nameInputError = document.querySelector(".name > .error");
+
+  const open = () => {
+    modal.showModal();
+  };
+
+  const close = () => {
+    modal.close();
+  };
+
+  const clearValues = () => {
+    nameInput.value = "";
+    nameInputError.textContent = "";
+    document.getElementById("X").checked = true;
+  };
+
+  return { open, close, clearValues };
+})();
