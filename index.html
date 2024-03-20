@@ -7,5 +7,99 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <main class="main-container">
+      <dialog class="modal">
+        <h2>Player Setup</h2>
+        <form>
+          <div class="name">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name" />
+            <span class="error"></span>
+          </div>
+
+          <div class="choice">
+            <fieldset>
+              <legend>Select your symbol:</legend>
+              <div>
+                <input type="radio" id="X" name="option" value="X" checked />
+                <label class="X" for="X"> X</label>
+              </div>
+              <div>
+                <input type="radio" id="O" name="option" value="O" />
+                <label class="O" for="O"> O</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="buttons-form">
+            <button class="submit-button" value="default">Save</button>
+          </div>
+        </form>
+      </dialog>
+
+      <div class="layout">
+        <div class="heading">TIC <span>TAC </span> TOE</div>
+
+        <div class="playRound-Layout">
+          <div class="circle">
+            <div class="num-round">1<span>st</span></div>
+            <div>Round</div>
+          </div>
+        </div>
+        <div class="restart-btn-layout">
+          <button class="restart-btn">RESTART</button>
+        </div>
+
+        <div class="player-container">
+          <div class="playerImage">
+            <img
+              width="61"
+              height="61"
+              src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/94/external-gamer-game-xnimrodx-blue-xnimrodx-2.png"
+              alt="external-gamer-game-xnimrodx-blue-xnimrodx-2"
+            />
+          </div>
+          <div class="player-section">
+            <div class="playerName"></div>
+            <div class="player-choice"></div>
+          </div>
+          <div class="playerScore">Win Rounds: <span></span></div>
+        </div>
+        <div class="gameLayout">
+          <div class="mainGame">
+            <div class="ticTacToe">
+              <div data-box="0"></div>
+              <div data-box="1"></div>
+              <div data-box="2"></div>
+              <div data-box="3"></div>
+              <div data-box="4"></div>
+              <div data-box="5"></div>
+              <div data-box="6"></div>
+              <div data-box="7"></div>
+              <div data-box="8"></div>
+            </div>
+          </div>
+        </div>
+        <div class="computer-container">
+          <div class="roboImage">
+            <img
+              width="78"
+              height="75"
+              src="https://img.icons8.com/3d-fluency/94/chatbot.png"
+              alt="chatbot"
+            />
+          </div>
+
+          <div class="computer-section">
+            <div>Computer</div>
+            <div class="computer-choice"></div>
+          </div>
+          <div class="computerScore">Win Rounds: <span></span></div>
+        </div>
+        <div class="active-layout">
+          <div class="gameState"></div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

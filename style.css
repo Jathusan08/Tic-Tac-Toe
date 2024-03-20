@@ -1,0 +1,431 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  height: 100%;
+  overscroll-behavior: none;
+  min-width: 1440px;
+  min-height: 630px;
+}
+
+.main-container {
+  width: auto;
+  height: 100%;
+  background-color: #ffd2da;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+dialog {
+  margin: 10% auto;
+  width: 80%;
+  height: 75%;
+  max-width: 520px;
+  max-height: 250px;
+  background-color: #fff;
+  padding: 34px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #e5bdc4;
+}
+
+.modal > h2 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+dialog > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.title > label,
+.author > label,
+.pages > label,
+.unread,
+.reading,
+.completed,
+.customValue {
+  color: #f7f7f7;
+}
+
+input {
+  background-color: #ffe8ec;
+  border: none;
+  color: #000000;
+}
+
+input:focus {
+  outline: 2px solid #fec853;
+}
+
+legend {
+  color: #d30a18;
+}
+
+input[type="radio"] {
+  accent-color: #fec853;
+}
+
+fieldset {
+  width: 470px;
+}
+
+.X,
+.O {
+  font-family: "Radio Canada", sans-serif;
+}
+
+.error {
+  font-size: 2rem;
+  font-weight: lighter;
+  display: inline-block;
+}
+
+.buttons-form {
+  text-align: center;
+}
+
+.buttons-form > .submit-button {
+  background-color: #fec853;
+  border: none;
+  color: #f7f7f7;
+  font-weight: bolder;
+  width: 75px;
+  height: 25px;
+}
+
+.buttons-form > .submit-button:hover {
+  background-color: #cba042;
+}
+
+.error {
+  font-size: 0.6rem;
+  font-weight: lighter;
+}
+
+.main-container > .layout {
+  background-color: #fdecef;
+  width: 1048.5px;
+  height: 570px;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: 3fr 6fr 2fr;
+}
+
+.heading {
+  width: aut;
+  font-family: sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 2rem;
+  font-weight: bolder;
+  grid-column: 1/2;
+  grid-row: 1/ 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding-left: 65px;
+}
+
+.heading > span {
+  color: #f34954;
+}
+
+.playRound-Layout {
+  width: auto;
+  height: 100%;
+  grid-column: 2/3;
+  grid-row: 1/ 2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 125px;
+  height: 125px;
+  background-color: #fec400;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle > .num-round {
+  font-size: 3rem;
+  font-weight: bolder;
+}
+
+.circle > .num-round > span {
+  font-size: 1.5rem;
+}
+
+.circle > div:nth-child(2) {
+  font-weight: bolder;
+}
+
+.restart-btn-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.restart-btn {
+  font-size: 1rem;
+  height: 55px;
+  width: 125px;
+  background-color: #7490fb;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px 25px 25px 25px;
+}
+
+.player-container {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+}
+
+.playerImage {
+  width: 87px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    108.1deg,
+    rgb(167, 220, 225) 11.2%,
+    rgb(217, 239, 242) 88.9%
+  );
+
+  border: 5px solid #ffffff; /* This sets a 1 pixel solid black border */
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  box-shadow: rgb(252, 170, 176) 0px 10px 10px;
+}
+
+.player-section {
+  height: 170px;
+  width: 170px;
+  background-color: #ffffff;
+  border-radius: 30% 30% 30% 30%;
+  border: 2px solid #fcaab0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: bolder;
+  padding-top: 55px;
+}
+
+.player-choice {
+  height: 40px;
+  width: 75px;
+  background-color: #f34954;
+  font-family: "Radio Canada", sans-serif;
+  border-radius: 25px 25px 25px 25px;
+  color: #f9d459;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.playerScore {
+  border: 2px solid #f9d668;
+  width: 170px;
+  height: 35px;
+  font-weight: 900;
+  color: #ffc91b;
+  font-size: 1rem;
+
+  border-radius: 25px 25px 25px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameLayout {
+  width: auto;
+  height: 100%;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainGame {
+  width: 325px;
+  height: 325px;
+  background-color: #ffffff;
+  border-radius: 5%;
+
+  border: 2px dashed #f3555f;
+  border-spacing: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticTacToe {
+  width: 301px;
+  height: 301px;
+  background-color: #f34954;
+  border-radius: 5%;
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+}
+
+.ticTacToe > div:nth-child(1),
+.ticTacToe > div:nth-child(2),
+.ticTacToe > div:nth-child(4),
+.ticTacToe > div:nth-child(5) {
+  border-right: 1px dashed #ffffff;
+  border-bottom: 1px dashed #ffffff;
+}
+
+.ticTacToe > div:nth-child(3),
+.ticTacToe > div:nth-child(6) {
+  border-bottom: 1px dashed #ffffff;
+}
+
+.ticTacToe > div:nth-child(7),
+.ticTacToe > div:nth-child(8) {
+  border-right: 1px dashed #ffffff;
+}
+
+.ticTacToe > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 4rem;
+  font-family: "Radio Canada", sans-serif;
+  color: #ffffff;
+}
+
+.computer-container {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+}
+
+.roboImage {
+  width: 87px;
+  height: 90px;
+
+  background: linear-gradient(
+    -180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  border: 5px solid #ffffff; /* This sets a 1 pixel solid black border */
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  box-shadow: rgb(252, 170, 176) 0px 10px 10px;
+}
+
+.computer-section {
+  height: 170px;
+  width: 170px;
+  background-color: #ffffff;
+  border-radius: 30% 30% 30% 30%;
+  border: 2px solid #fcaab0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: bolder;
+  padding-top: 55px;
+}
+
+.computerScore {
+  border: 2px solid #f9d668;
+  width: 170px;
+  height: 35px;
+  font-weight: 900;
+  color: #ffc91b;
+  font-size: 1rem;
+  border-radius: 25px 25px 25px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.computer-choice {
+  height: 40px;
+  width: 75px;
+  background-color: #f34954;
+  border-radius: 25px 25px 25px 25px;
+  color: #f9d459;
+  display: flex;
+  font-family: "Radio Canada", sans-serif;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.active-layout {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameState {
+  width: 200px;
+  height: 55px;
+  background-color: #f9d459;
+  border-radius: 25px 25px 25px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  color: #f34c54;
+  font-size: 1rem;
+}
