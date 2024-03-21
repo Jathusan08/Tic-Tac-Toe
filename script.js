@@ -54,6 +54,27 @@ const formValidator = (() => {
   return { userInputTextValidation };
 })();
 
+const displayController = (() => {
+  const playerName = document.querySelector(".playerName"); // playerName
+  const playerChoice = document.querySelector(".player-choice"); // PlayerChoice
+  const computerName = document.querySelector(".computer-section > div"); // Comptuer name
+  const computerChoice = document.querySelector(".computer-choice"); // Comptuer Choice
+  const gameState = document.querySelector(".gameState"); // message on who turn
+  const restartBtn = document.querySelector(".restart-btn"); // restart button
+  const allGrids = document.querySelectorAll(".ticTacToe > div"); // grid
+  const playerWinScore = document.querySelector(".playerScore > span");
+  const computerWinScore = document.querySelector(".computerScore > span");
+  const numRoundDiv = document.querySelector(".num-round");
+  const abbreavationNumber = numRoundDiv.querySelector(".num-round span");
+
+  const clearGrid = () => {
+    allGrids.forEach((grid) => {
+      grid.textContent = "";
+      grid.setAttribute("style", "background: f34954;");
+    });
+  };
+})();
+
 (function startTicTacToeGame() {
   const submitbtn = document.querySelector(".submit-button");
   const nameInput = document.getElementById("name");
