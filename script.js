@@ -149,6 +149,11 @@ const displayController = (() => {
     playerWinScore.textContent = "";
     computerChoice.textContent = "";
     computerWinScore.textContent = "";
+
+    //     // abbreavationNumber.textContent = "nd";
+    //     // //numRoundDiv.textContent = "2";
+
+    gameState.textContent = "";
     clearGrid();
     modal.open();
   });
