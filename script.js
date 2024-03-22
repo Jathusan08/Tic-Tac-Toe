@@ -141,6 +141,18 @@ const displayController = (() => {
     }
   });
 
+  restartBtn.addEventListener("click", (event) => {
+    player = null;
+    computer = null;
+    playerName.textContent = "";
+    playerChoice.textContent = "";
+    playerWinScore.textContent = "";
+    computerChoice.textContent = "";
+    computerWinScore.textContent = "";
+    clearGrid();
+    modal.open();
+  });
+
   return { openModal, closeModal, resetModal };
 })();
 
