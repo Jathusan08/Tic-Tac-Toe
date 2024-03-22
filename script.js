@@ -17,22 +17,16 @@ function createParticipant(name, symbol) {
 }
 
 const modal = (() => {
-  const modal = document.querySelector(".modal");
-  const nameInput = document.getElementById("name");
-  const nameInputError = document.querySelector(".name > .error");
-
   const open = () => {
-    modal.showModal();
+    displayController.openModal();
   };
 
   const close = () => {
-    modal.close();
+    displayController.closeModal();
   };
 
   const clearValues = () => {
-    nameInput.value = "";
-    nameInputError.textContent = "";
-    document.getElementById("X").checked = true;
+    displayController.resetModal();
   };
 
   return { open, close, clearValues };
@@ -57,15 +51,42 @@ const formValidator = (() => {
 const displayController = (() => {
   const playerName = document.querySelector(".playerName"); // playerName
   const playerChoice = document.querySelector(".player-choice"); // PlayerChoice
+  const playerWinScore = document.querySelector(".playerScore > span");
+
   const computerName = document.querySelector(".computer-section > div"); // Comptuer name
   const computerChoice = document.querySelector(".computer-choice"); // Comptuer Choice
-  const gameState = document.querySelector(".gameState"); // message on who turn
-  const restartBtn = document.querySelector(".restart-btn"); // restart button
-  const allGrids = document.querySelectorAll(".ticTacToe > div"); // grid
-  const playerWinScore = document.querySelector(".playerScore > span");
   const computerWinScore = document.querySelector(".computerScore > span");
+
+  const gameState = document.querySelector(".gameState"); // message on who turn
+
+  const restartBtn = document.querySelector(".restart-btn"); // restart button
+  const submitbtn = document.querySelector(".submit-button");
+
+  const allGrids = document.querySelectorAll(".ticTacToe > div"); // grid
+
   const numRoundDiv = document.querySelector(".num-round");
   const abbreavationNumber = numRoundDiv.querySelector(".num-round span");
+
+  const modalElement = document.querySelector(".modal");
+  const nameInput = document.getElementById("name");
+  const nameInputError = document.querySelector(".name > .error");
+
+  let player = null;
+  let computer = null;
+
+  const openModal = () => {
+    modalElement.showModal();
+  };
+
+  const closeModal = () => {
+    modalElement.close();
+  };
+
+  const resetModal = () => {
+    nameInput.value = "";
+    nameInputError.textContent = "";
+    document.getElementById("X").checked = true;
+  };
 
   const clearGrid = () => {
     allGrids.forEach((grid) => {
@@ -73,17 +94,6 @@ const displayController = (() => {
       grid.setAttribute("style", "background: f34954;");
     });
   };
-})();
-
-(function startTicTacToeGame() {
-  const submitbtn = document.querySelector(".submit-button");
-  const nameInput = document.getElementById("name");
-  const nameInputError = document.querySelector(".name > .error");
-
-  let player = null;
-  let computer = null;
-
-  modal.open();
 
   nameInput.addEventListener("input", () => {
     formValidator.userInputTextValidation(
@@ -93,7 +103,7 @@ const displayController = (() => {
     );
   });
 
-  const submitButtonEvent = () => {
+  const handleFormSubmission = () => {
     const selectedRadioButton = document.querySelector(
       'input[name="option"]:checked'
     );
@@ -105,12 +115,11 @@ const displayController = (() => {
         "Name required"
       )
     ) {
-      document.querySelector(".playerName").textContent = nameInput.value;
-      document.querySelector(".player-choice").textContent =
-        selectedRadioButton.value;
-      document.querySelector(".computer-choice").textContent =
+      playerName.textContent = nameInput.value;
+      playerChoice.textContent = selectedRadioButton.value;
+      computerChoice.textContent =
         selectedRadioButton.value === "X" ? "O" : "X";
-      document.querySelector(".gameState").textContent = "Player Turn";
+      gameState.textContent = "Player Turn";
       modal.close();
       modal.clearValues();
       return true;
@@ -121,17 +130,23 @@ const displayController = (() => {
 
   submitbtn.addEventListener("click", (event) => {
     event.preventDefault();
-    if (submitButtonEvent()) {
+    if (handleFormSubmission()) {
       player = createParticipant(
-        document.querySelector(".playerName").textContent,
-        document.querySelector(".player-choice").textContent
+        playerName.textContent,
+        playerChoice.textContent
       );
-      computer = createParticipant(
-        "Computer",
-        document.querySelector(".computer-choice").textContent
-      );
+      computer = createParticipant("Computer", computerChoice.textContent);
       console.log(player.getName(), player.getSymbol());
       console.log(computer.getName(), computer.getSymbol());
     }
   });
+
+  return { openModal, closeModal, resetModal };
+})();
+
+const startTicTacToeGame = (() => {
+  // let player = null;
+  // let computer = null;
+
+  modal.open();
 })();
