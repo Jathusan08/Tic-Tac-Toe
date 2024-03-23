@@ -48,6 +48,214 @@ const formValidator = (() => {
   return { userInputTextValidation };
 })();
 
+const gameboard = (() => {
+  //   ///////            0   1   2   3   4   5   6   7   8
+  const ticTacToeBoard = ["", "", "", "", "", "", "", "", ""];
+
+  const resetTicTacBoard = () => {
+    for (let i = 0; i < ticTacToeBoard.length; i++) {
+      ticTacToeBoard[i] = "";
+    }
+  };
+
+  const isTicTaeBoardFilled = () => {
+    for (let i = 0; i < ticTacToeBoard.length; i++) {
+      if (ticTacToeBoard[i] !== "X" && ticTacToeBoard[i] !== "O") {
+        return false; // If any element is not 'X' or 'O', return false
+      }
+    }
+    return true; // If all elements are 'X' or 'O', return true
+  };
+
+  const checkWin = (grid, participant) => {
+    switch (grid) {
+      case 0:
+        if (
+          ticTacToeBoard[0] === participant &&
+          ticTacToeBoard[1] === participant &&
+          ticTacToeBoard[2] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[0] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[8] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[0] === participant &&
+          ticTacToeBoard[3] === participant &&
+          ticTacToeBoard[6] === participant
+        ) {
+        }
+
+        break;
+
+      case 1:
+        if (
+          ticTacToeBoard[1] === participant &&
+          ticTacToeBoard[0] === participant &&
+          ticTacToeBoard[2] === participan
+        ) {
+        } else if (
+          ticTacToeBoard[1] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[7] === participant
+        ) {
+        }
+
+        break;
+
+      case 2:
+        if (
+          ticTacToeBoard[2] === participant &&
+          ticTacToeBoard[1] === participant &&
+          ticTacToeBoard[0] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[2] === participant &&
+          ticTacToeBoard[5] === participant &&
+          ticTacToeBoard[8] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[2] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[6] === participant
+        ) {
+        }
+
+        break;
+
+      case 3:
+        if (
+          ticTacToeBoard[3] === participant &&
+          ticTacToeBoard[0] === participant &&
+          ticTacToeBoard[6] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[3] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[5] === participant
+        ) {
+        }
+
+        break;
+
+      case 4:
+        if (
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[1] === participant &&
+          ticTacToeBoard[7] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[3] === participant &&
+          ticTacToeBoard[5] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[0] === participant &&
+          ticTacToeBoard[8] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[2] === participant &&
+          ticTacToeBoard[6] === participant
+        ) {
+        }
+
+        break;
+
+      case 5:
+        if (
+          ticTacToeBoard[5] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[3] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[5] === participant &&
+          ticTacToeBoard[2] === participant &&
+          ticTacToeBoard[8] === participant
+        ) {
+        }
+
+        break;
+
+      case 6:
+        if (
+          ticTacToeBoard[6] === participant &&
+          ticTacToeBoard[7] === participant &&
+          ticTacToeBoard[8] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[6] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[2] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[6] === participant &&
+          ticTacToeBoard[3] === participant &&
+          ticTacToeBoard[0] === participant
+        ) {
+        }
+
+        break;
+
+      case 7:
+        if (
+          ticTacToeBoard[7] === participant &&
+          ticTacToeBoard[6] === participant &&
+          ticTacToeBoard[8] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[7] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[1] === participant
+        ) {
+        }
+
+        break;
+
+      case 8:
+        if (
+          ticTacToeBoard[8] === participant &&
+          ticTacToeBoard[7] === participant &&
+          ticTacToeBoard[6] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[8] === participant &&
+          ticTacToeBoard[5] === participant &&
+          ticTacToeBoard[2] === participant
+        ) {
+        } else if (
+          ticTacToeBoard[8] === participant &&
+          ticTacToeBoard[4] === participant &&
+          ticTacToeBoard[0] === participant
+        ) {
+        }
+
+        break;
+
+      default:
+        break;
+    }
+  };
+  const showTicTacToeBoard = () => {
+    console.log(ticTacToeBoard);
+  };
+
+  const updateBoard = (grid, participant) => {
+    if (
+      Number(grid) >= 0 &&
+      Number(grid) < ticTacToeBoard.length &&
+      (participant === "X" || participant === "O")
+    ) {
+      if (ticTacToeBoard[grid] === "") {
+        ticTacToeBoard[grid] = participant;
+      }
+    }
+  };
+  return { isTicTaeBoardFilled, resetTicTacBoard, updateBoard };
+})();
+
 const displayController = (() => {
   const playerName = document.querySelector(".playerName"); // playerName
   const playerChoice = document.querySelector(".player-choice"); // PlayerChoice
