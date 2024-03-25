@@ -186,13 +186,15 @@ fieldset {
   font-weight: bolder;
 }
 
-.restart-btn-layout {
+.user-btn-option-layout {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 13px;
 }
 
-.restart-btn {
+.restart-btn,
+.nextRound-btn {
   font-size: 1rem;
   height: 55px;
   width: 125px;
@@ -200,6 +202,11 @@ fieldset {
   color: #ffffff;
   border: none;
   border-radius: 25px 25px 25px 25px;
+}
+
+.nextRound-btn {
+  background-color: #fb749f;
+  display: none;
 }
 
 .player-container {
