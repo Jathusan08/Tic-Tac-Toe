@@ -68,23 +68,27 @@ const gameboard = (() => {
   };
 
   const checkWin = (grid, participant) => {
-    switch (grid) {
+    let winningPattern = [];
+    switch (Number(grid)) {
       case 0:
         if (
           ticTacToeBoard[0] === participant &&
           ticTacToeBoard[1] === participant &&
           ticTacToeBoard[2] === participant
         ) {
+          winningPattern.push(0, 1, 2);
         } else if (
           ticTacToeBoard[0] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[8] === participant
         ) {
+          winningPattern.push(0, 4, 8);
         } else if (
           ticTacToeBoard[0] === participant &&
           ticTacToeBoard[3] === participant &&
           ticTacToeBoard[6] === participant
         ) {
+          winningPattern.push(0, 3, 6);
         }
 
         break;
@@ -93,13 +97,15 @@ const gameboard = (() => {
         if (
           ticTacToeBoard[1] === participant &&
           ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[2] === participan
+          ticTacToeBoard[2] === participant
         ) {
+          winningPattern.push(1, 0, 2);
         } else if (
           ticTacToeBoard[1] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[7] === participant
         ) {
+          winningPattern.push(1, 4, 7);
         }
 
         break;
@@ -110,16 +116,19 @@ const gameboard = (() => {
           ticTacToeBoard[1] === participant &&
           ticTacToeBoard[0] === participant
         ) {
+          winningPattern.push(2, 1, 0);
         } else if (
           ticTacToeBoard[2] === participant &&
           ticTacToeBoard[5] === participant &&
           ticTacToeBoard[8] === participant
         ) {
+          winningPattern.push(2, 5, 8);
         } else if (
           ticTacToeBoard[2] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[6] === participant
         ) {
+          winningPattern.push(2, 4, 6);
         }
 
         break;
@@ -130,11 +139,13 @@ const gameboard = (() => {
           ticTacToeBoard[0] === participant &&
           ticTacToeBoard[6] === participant
         ) {
+          winningPattern.push(3, 0, 6);
         } else if (
           ticTacToeBoard[3] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[5] === participant
         ) {
+          winningPattern.push(3, 4, 5);
         }
 
         break;
@@ -145,21 +156,25 @@ const gameboard = (() => {
           ticTacToeBoard[1] === participant &&
           ticTacToeBoard[7] === participant
         ) {
+          winningPattern.push(4, 1, 7);
         } else if (
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[3] === participant &&
           ticTacToeBoard[5] === participant
         ) {
+          winningPattern.push(4, 3, 5);
         } else if (
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[0] === participant &&
           ticTacToeBoard[8] === participant
         ) {
+          winningPattern.push(4, 0, 8);
         } else if (
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[2] === participant &&
           ticTacToeBoard[6] === participant
         ) {
+          winningPattern.push(4, 2, 6);
         }
 
         break;
@@ -170,11 +185,13 @@ const gameboard = (() => {
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[3] === participant
         ) {
+          winningPattern.push(5, 4, 3);
         } else if (
           ticTacToeBoard[5] === participant &&
           ticTacToeBoard[2] === participant &&
           ticTacToeBoard[8] === participant
         ) {
+          winningPattern.push(5, 2, 8);
         }
 
         break;
@@ -185,16 +202,19 @@ const gameboard = (() => {
           ticTacToeBoard[7] === participant &&
           ticTacToeBoard[8] === participant
         ) {
+          winningPattern.push(6, 7, 8);
         } else if (
           ticTacToeBoard[6] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[2] === participant
         ) {
+          winningPattern.push(6, 4, 2);
         } else if (
           ticTacToeBoard[6] === participant &&
           ticTacToeBoard[3] === participant &&
           ticTacToeBoard[0] === participant
         ) {
+          winningPattern.push(6, 3, 0);
         }
 
         break;
@@ -205,11 +225,13 @@ const gameboard = (() => {
           ticTacToeBoard[6] === participant &&
           ticTacToeBoard[8] === participant
         ) {
+          winningPattern.push(7, 6, 8);
         } else if (
           ticTacToeBoard[7] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[1] === participant
         ) {
+          winningPattern.push(7, 4, 1);
         }
 
         break;
@@ -220,16 +242,19 @@ const gameboard = (() => {
           ticTacToeBoard[7] === participant &&
           ticTacToeBoard[6] === participant
         ) {
+          winningPattern.push(8, 7, 6);
         } else if (
           ticTacToeBoard[8] === participant &&
           ticTacToeBoard[5] === participant &&
           ticTacToeBoard[2] === participant
         ) {
+          winningPattern.push(8, 5, 2);
         } else if (
           ticTacToeBoard[8] === participant &&
           ticTacToeBoard[4] === participant &&
           ticTacToeBoard[0] === participant
         ) {
+          winningPattern.push(8, 4, 0);
         }
 
         break;
@@ -237,12 +262,14 @@ const gameboard = (() => {
       default:
         break;
     }
+    return winningPattern;
   };
   const showTicTacToeBoard = () => {
     console.log(ticTacToeBoard);
   };
 
   const updateBoard = (grid, participant) => {
+    let winningCheck = [];
     if (
       Number(grid) >= 0 &&
       Number(grid) < ticTacToeBoard.length &&
@@ -250,10 +277,17 @@ const gameboard = (() => {
     ) {
       if (ticTacToeBoard[grid] === "") {
         ticTacToeBoard[grid] = participant;
+        winningCheck = checkWin(grid, participant);
       }
     }
+    return winningCheck;
   };
-  return { isTicTaeBoardFilled, resetTicTacBoard, updateBoard };
+  return {
+    isTicTaeBoardFilled,
+    resetTicTacBoard,
+    updateBoard,
+    showTicTacToeBoard,
+  };
 })();
 
 const displayController = (() => {
@@ -279,6 +313,8 @@ const displayController = (() => {
   const nameInput = document.getElementById("name");
   const nameInputError = document.querySelector(".name > .error");
 
+  const TicTacToeGrid = document.querySelector(".ticTacToe");
+
   let player = null;
   let computer = null;
 
@@ -296,20 +332,18 @@ const displayController = (() => {
     document.getElementById("X").checked = true;
   };
 
+  const highlightWinningCells = (cells) => {
+    for (let i = 0; i < cells.length; i++) {
+      allGrids[cells[i]].setAttribute("style", "background: #F9D459;");
+    }
+  };
+
   const clearGrid = () => {
     allGrids.forEach((grid) => {
       grid.textContent = "";
       grid.setAttribute("style", "background: f34954;");
     });
   };
-
-  nameInput.addEventListener("input", () => {
-    formValidator.userInputTextValidation(
-      nameInput,
-      nameInputError,
-      "Name required"
-    );
-  });
 
   const handleFormSubmission = () => {
     const selectedRadioButton = document.querySelector(
@@ -331,8 +365,59 @@ const displayController = (() => {
       modal.close();
       modal.clearValues();
       return true;
-    } else {
-      return false;
+    }
+  };
+
+  const computerMove = () => {
+    let emptyGrid = [];
+    let randomChoice;
+
+    if (!gameboard.isTicTaeBoardFilled()) {
+      // get all the empty grids
+      for (let i = 0; i < allGrids.length; i++) {
+        if (allGrids[i].textContent === "") {
+          emptyGrid.push(Number(allGrids[i].getAttribute("data-box")));
+        }
+      }
+      randomChoice = Math.floor(Math.random() * (emptyGrid.length - 1)) + 0;
+      allGrids[emptyGrid[randomChoice]].textContent = computer.getSymbol();
+      let checkWin = gameboard.updateBoard(
+        emptyGrid[randomChoice],
+        computer.getSymbol()
+      );
+      if (checkWin.length != 0) {
+        highlightWinningCells(checkWin);
+        gameState.textContent = "Computer Won";
+      } else {
+        emptyGrid = [];
+
+        gameState.textContent = "Player Turn";
+        TicTacToeGrid.addEventListener("click", playerMove);
+      }
+    }
+  };
+  const playerMove = (event) => {
+    let grid = event.target;
+    console.log(grid);
+    if (!gameboard.isTicTaeBoardFilled()) {
+      if (grid.textContent === "") {
+        grid.textContent = player.getSymbol();
+        let checkWin = gameboard.updateBoard(
+          Number(grid.getAttribute("data-box")),
+          player.getSymbol()
+        );
+        if (checkWin.length != 0) {
+          highlightWinningCells(checkWin);
+          gameState.textContent = "Player Won";
+          TicTacToeGrid.removeEventListener("click", playerMove);
+        } else {
+          TicTacToeGrid.removeEventListener("click", playerMove);
+          gameState.textContent = "Computer Turn";
+          setTimeout(function () {
+            computerMove();
+          }, 1000);
+        }
+      }
     }
   };
 
@@ -350,6 +435,8 @@ const displayController = (() => {
   });
 
   restartBtn.addEventListener("click", (event) => {
+    gameboard.resetTicTacBoard();
+    TicTacToeGrid.addEventListener("click", playerMove);
     player = null;
     computer = null;
     playerName.textContent = "";
@@ -365,6 +452,16 @@ const displayController = (() => {
     clearGrid();
     modal.open();
   });
+
+  nameInput.addEventListener("input", () => {
+    formValidator.userInputTextValidation(
+      nameInput,
+      nameInputError,
+      "Name required"
+    );
+  });
+
+  TicTacToeGrid.addEventListener("click", playerMove);
 
   return { openModal, closeModal, resetModal };
 })();
