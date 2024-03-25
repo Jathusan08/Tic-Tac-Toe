@@ -387,6 +387,8 @@ const displayController = (() => {
       );
       if (checkWin.length != 0) {
         highlightWinningCells(checkWin);
+        computer.increaseScore();
+        computerWinScore.textContent = computer.getScore();
         gameState.textContent = "Computer Won";
       } else {
         emptyGrid = [];
@@ -408,6 +410,8 @@ const displayController = (() => {
         );
         if (checkWin.length != 0) {
           highlightWinningCells(checkWin);
+          player.increaseScore();
+          playerWinScore.textContent = player.getScore();
           gameState.textContent = "Player Won";
           TicTacToeGrid.removeEventListener("click", playerMove);
         } else {
