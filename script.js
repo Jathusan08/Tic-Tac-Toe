@@ -295,7 +295,6 @@ const displayController = (() => {
   const playerChoice = document.querySelector(".player-choice"); // PlayerChoice
   const playerWinScore = document.querySelector(".playerScore > span");
 
-  const computerName = document.querySelector(".computer-section > div"); // Comptuer name
   const computerChoice = document.querySelector(".computer-choice"); // Comptuer Choice
   const computerWinScore = document.querySelector(".computerScore > span");
 
@@ -303,11 +302,11 @@ const displayController = (() => {
 
   const restartBtn = document.querySelector(".restart-btn"); // restart button
   const submitbtn = document.querySelector(".submit-button");
+  const nextRoundBtn = document.querySelector(".nextRound-btn");
 
   const allGrids = document.querySelectorAll(".ticTacToe > div"); // grid
 
   const numRoundDiv = document.querySelector(".num-round");
-  const abbreavationNumber = numRoundDiv.querySelector(".num-round span");
 
   const modalElement = document.querySelector(".modal");
   const nameInput = document.getElementById("name");
@@ -390,8 +389,12 @@ const displayController = (() => {
         computer.increaseScore();
         computerWinScore.textContent = computer.getScore();
         gameState.textContent = "Computer Won";
+        nextRoundBtn.style.display = "block";
+      } else if (gameboard.isTicTaeBoardFilled()) {
+        gameState.textContent = "draw match";
+        nextRoundBtn.style.display = "block";
       } else {
-        emptyGrid = [];
+        //emptyGrid = [];
 
         gameState.textContent = "Player Turn";
         TicTacToeGrid.addEventListener("click", playerMove);
@@ -414,6 +417,10 @@ const displayController = (() => {
           playerWinScore.textContent = player.getScore();
           gameState.textContent = "Player Won";
           TicTacToeGrid.removeEventListener("click", playerMove);
+          nextRoundBtn.style.display = "block";
+        } else if (gameboard.isTicTaeBoardFilled()) {
+          gameState.textContent = "draw match";
+          nextRoundBtn.style.display = "block";
         } else {
           TicTacToeGrid.removeEventListener("click", playerMove);
           gameState.textContent = "Computer Turn";
@@ -440,18 +447,21 @@ const displayController = (() => {
 
   restartBtn.addEventListener("click", (event) => {
     gameboard.resetTicTacBoard();
+    nextRoundBtn.style.display = "none";
     TicTacToeGrid.addEventListener("click", playerMove);
     player = null;
     computer = null;
+
     playerName.textContent = "";
     playerChoice.textContent = "";
     playerWinScore.textContent = "";
     computerChoice.textContent = "";
     computerWinScore.textContent = "";
 
-    //     // abbreavationNumber.textContent = "nd";
-    //     // //numRoundDiv.textContent = "2";
-
+    numRoundDiv.textContent = "1";
+    let spanElement = document.createElement("span");
+    spanElement.textContent = "st";
+    numRoundDiv.appendChild(spanElement);
     gameState.textContent = "";
     clearGrid();
     modal.open();
@@ -466,6 +476,39 @@ const displayController = (() => {
   });
 
   TicTacToeGrid.addEventListener("click", playerMove);
+
+  nextRoundBtn.addEventListener("click", () => {
+    let currentRoundNumber = parseInt(numRoundDiv.textContent);
+
+    let nextRoundNumber = currentRoundNumber + 1;
+
+    numRoundDiv.textContent = nextRoundNumber;
+
+    let spanElement = document.createElement("span");
+    if (nextRoundNumber === 2) {
+      spanElement.textContent = "nd";
+    } else if (nextRoundNumber === 3) {
+      spanElement.textContent = "rd";
+    } else if (nextRoundNumber > 3) {
+      spanElement.textContent = "th";
+    }
+
+    numRoundDiv.appendChild(spanElement);
+    clearGrid();
+    gameboard.resetTicTacBoard();
+    nextRoundBtn.style.display = "none";
+
+    if (gameState.textContent === "Player Won") {
+      gameState.textContent = "Computer Turn";
+      setTimeout(function () {
+        computerMove();
+      }, 1000);
+    } else if (gameState.textContent === "Computer Won") {
+      gameState.textContent = "Player Turn";
+      TicTacToeGrid.addEventListener("click", playerMove);
+    } else if (gameState.textContent === "draw match") {
+    }
+  });
 
   return { openModal, closeModal, resetModal };
 })();
