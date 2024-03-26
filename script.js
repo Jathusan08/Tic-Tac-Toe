@@ -67,26 +67,35 @@ const gameboard = (() => {
     return true; // If all elements are 'X' or 'O', return true
   };
 
+  const checkWinningPattern = (grids, participant) => {
+    const array = grids;
+    const allTrue = array.every((grid) => grid === participant);
+    return allTrue;
+  };
+
   const checkWin = (grid, participant) => {
     let winningPattern = [];
     switch (Number(grid)) {
       case 0:
         if (
-          ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[1] === participant &&
-          ticTacToeBoard[2] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[0], ticTacToeBoard[1], ticTacToeBoard[2]],
+            participant
+          )
         ) {
           winningPattern.push(0, 1, 2);
         } else if (
-          ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[8] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[0], ticTacToeBoard[4], ticTacToeBoard[8]],
+            participant
+          )
         ) {
           winningPattern.push(0, 4, 8);
         } else if (
-          ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[3] === participant &&
-          ticTacToeBoard[6] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[0], ticTacToeBoard[3], ticTacToeBoard[6]],
+            participant
+          )
         ) {
           winningPattern.push(0, 3, 6);
         }
@@ -95,15 +104,17 @@ const gameboard = (() => {
 
       case 1:
         if (
-          ticTacToeBoard[1] === participant &&
-          ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[2] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[1], ticTacToeBoard[0], ticTacToeBoard[2]],
+            participant
+          )
         ) {
           winningPattern.push(1, 0, 2);
         } else if (
-          ticTacToeBoard[1] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[7] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[1], ticTacToeBoard[4], ticTacToeBoard[7]],
+            participant
+          )
         ) {
           winningPattern.push(1, 4, 7);
         }
@@ -112,21 +123,24 @@ const gameboard = (() => {
 
       case 2:
         if (
-          ticTacToeBoard[2] === participant &&
-          ticTacToeBoard[1] === participant &&
-          ticTacToeBoard[0] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[2], ticTacToeBoard[1], ticTacToeBoard[0]],
+            participant
+          )
         ) {
           winningPattern.push(2, 1, 0);
         } else if (
-          ticTacToeBoard[2] === participant &&
-          ticTacToeBoard[5] === participant &&
-          ticTacToeBoard[8] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[2], ticTacToeBoard[5], ticTacToeBoard[8]],
+            participant
+          )
         ) {
           winningPattern.push(2, 5, 8);
         } else if (
-          ticTacToeBoard[2] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[6] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[2], ticTacToeBoard[4], ticTacToeBoard[6]],
+            participant
+          )
         ) {
           winningPattern.push(2, 4, 6);
         }
@@ -135,15 +149,17 @@ const gameboard = (() => {
 
       case 3:
         if (
-          ticTacToeBoard[3] === participant &&
-          ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[6] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[3], ticTacToeBoard[0], ticTacToeBoard[6]],
+            participant
+          )
         ) {
           winningPattern.push(3, 0, 6);
         } else if (
-          ticTacToeBoard[3] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[5] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[3], ticTacToeBoard[4], ticTacToeBoard[5]],
+            participant
+          )
         ) {
           winningPattern.push(3, 4, 5);
         }
@@ -152,27 +168,31 @@ const gameboard = (() => {
 
       case 4:
         if (
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[1] === participant &&
-          ticTacToeBoard[7] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[4], ticTacToeBoard[1], ticTacToeBoard[7]],
+            participant
+          )
         ) {
           winningPattern.push(4, 1, 7);
         } else if (
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[3] === participant &&
-          ticTacToeBoard[5] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[4], ticTacToeBoard[3], ticTacToeBoard[5]],
+            participant
+          )
         ) {
           winningPattern.push(4, 3, 5);
         } else if (
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[0] === participant &&
-          ticTacToeBoard[8] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[4], ticTacToeBoard[0], ticTacToeBoard[8]],
+            participant
+          )
         ) {
           winningPattern.push(4, 0, 8);
         } else if (
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[2] === participant &&
-          ticTacToeBoard[6] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[4], ticTacToeBoard[2], ticTacToeBoard[6]],
+            participant
+          )
         ) {
           winningPattern.push(4, 2, 6);
         }
@@ -181,15 +201,17 @@ const gameboard = (() => {
 
       case 5:
         if (
-          ticTacToeBoard[5] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[3] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[5], ticTacToeBoard[4], ticTacToeBoard[3]],
+            participant
+          )
         ) {
           winningPattern.push(5, 4, 3);
         } else if (
-          ticTacToeBoard[5] === participant &&
-          ticTacToeBoard[2] === participant &&
-          ticTacToeBoard[8] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[5], ticTacToeBoard[2], ticTacToeBoard[8]],
+            participant
+          )
         ) {
           winningPattern.push(5, 2, 8);
         }
@@ -198,21 +220,24 @@ const gameboard = (() => {
 
       case 6:
         if (
-          ticTacToeBoard[6] === participant &&
-          ticTacToeBoard[7] === participant &&
-          ticTacToeBoard[8] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[6], ticTacToeBoard[7], ticTacToeBoard[8]],
+            participant
+          )
         ) {
           winningPattern.push(6, 7, 8);
         } else if (
-          ticTacToeBoard[6] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[2] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[6], ticTacToeBoard[4], ticTacToeBoard[2]],
+            participant
+          )
         ) {
           winningPattern.push(6, 4, 2);
         } else if (
-          ticTacToeBoard[6] === participant &&
-          ticTacToeBoard[3] === participant &&
-          ticTacToeBoard[0] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[6], ticTacToeBoard[3], ticTacToeBoard[0]],
+            participant
+          )
         ) {
           winningPattern.push(6, 3, 0);
         }
@@ -221,15 +246,17 @@ const gameboard = (() => {
 
       case 7:
         if (
-          ticTacToeBoard[7] === participant &&
-          ticTacToeBoard[6] === participant &&
-          ticTacToeBoard[8] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[7], ticTacToeBoard[6], ticTacToeBoard[8]],
+            participant
+          )
         ) {
           winningPattern.push(7, 6, 8);
         } else if (
-          ticTacToeBoard[7] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[1] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[7], ticTacToeBoard[4], ticTacToeBoard[1]],
+            participant
+          )
         ) {
           winningPattern.push(7, 4, 1);
         }
@@ -238,21 +265,24 @@ const gameboard = (() => {
 
       case 8:
         if (
-          ticTacToeBoard[8] === participant &&
-          ticTacToeBoard[7] === participant &&
-          ticTacToeBoard[6] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[8], ticTacToeBoard[7], ticTacToeBoard[6]],
+            participant
+          )
         ) {
           winningPattern.push(8, 7, 6);
         } else if (
-          ticTacToeBoard[8] === participant &&
-          ticTacToeBoard[5] === participant &&
-          ticTacToeBoard[2] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[8], ticTacToeBoard[5], ticTacToeBoard[2]],
+            participant
+          )
         ) {
           winningPattern.push(8, 5, 2);
         } else if (
-          ticTacToeBoard[8] === participant &&
-          ticTacToeBoard[4] === participant &&
-          ticTacToeBoard[0] === participant
+          checkWinningPattern(
+            [ticTacToeBoard[8], ticTacToeBoard[4], ticTacToeBoard[0]],
+            participant
+          )
         ) {
           winningPattern.push(8, 4, 0);
         }
@@ -313,6 +343,8 @@ const displayController = (() => {
   const nameInputError = document.querySelector(".name > .error");
 
   const TicTacToeGrid = document.querySelector(".ticTacToe");
+
+  let playerTurn = true; // at the start of the game player will go first
 
   let player = null;
   let computer = null;
@@ -393,6 +425,7 @@ const displayController = (() => {
       } else if (gameboard.isTicTaeBoardFilled()) {
         gameState.textContent = "draw match";
         nextRoundBtn.style.display = "block";
+        playerTurn = true;
       } else {
         gameState.textContent = "Player Turn";
         TicTacToeGrid.addEventListener("click", playerMove);
@@ -419,6 +452,7 @@ const displayController = (() => {
         } else if (gameboard.isTicTaeBoardFilled()) {
           gameState.textContent = "draw match";
           nextRoundBtn.style.display = "block";
+          playerTurn = false;
         } else {
           TicTacToeGrid.removeEventListener("click", playerMove);
           gameState.textContent = "Computer Turn";
@@ -503,6 +537,16 @@ const displayController = (() => {
       gameState.textContent = "Player Turn";
       TicTacToeGrid.addEventListener("click", playerMove);
     } else if (gameState.textContent === "draw match") {
+      if (!playerTurn) {
+        TicTacToeGrid.removeEventListener("click", playerMove);
+        gameState.textContent = "Computer Turn";
+        setTimeout(function () {
+          computerMove();
+        }, 1000);
+      } else {
+        gameState.textContent = "Player Turn";
+        TicTacToeGrid.addEventListener("click", playerMove);
+      }
     }
   });
 
