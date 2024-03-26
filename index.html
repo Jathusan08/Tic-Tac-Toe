@@ -21,16 +21,25 @@
           <div class="choice">
             <fieldset>
               <legend>Select your symbol:</legend>
-              <div>
-                <input type="radio" id="X" name="option" value="X" checked />
-                <label class="X" for="X"> X</label>
-              </div>
-              <div>
-                <input type="radio" id="O" name="option" value="O" />
-                <label class="O" for="O"> O</label>
+              <div class="player-selection">
+                <div class="X-selection">
+                  <input type="radio" id="X" name="option" value="X" checked />
+                  <label class="X" for="X">
+                    <div class="X-container">X</div></label
+                  >
+                </div>
+                <div class="O-selection">
+                  <input type="radio" id="O" name="option" value="O" />
+                  <label class="O" for="O">
+                    <div class="O-container">O</div></label
+                  >
+                </div>
               </div>
             </fieldset>
           </div>
+          <p class="message">
+            Starting with Player - Get ready to make your move!
+          </p>
           <div class="buttons-form">
             <button class="submit-button" value="default">Save</button>
           </div>

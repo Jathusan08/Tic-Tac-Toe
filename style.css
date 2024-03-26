@@ -28,10 +28,10 @@ body {
 
 dialog {
   margin: 10% auto;
-  width: 80%;
-  height: 75%;
-  max-width: 520px;
-  max-height: 250px;
+  width: 100%;
+  height: 85%;
+  max-width: 525px;
+  max-height: 300px;
   background-color: #fff;
   padding: 34px;
   border: 0;
@@ -83,15 +83,36 @@ legend {
 
 input[type="radio"] {
   accent-color: #fec853;
+  transform: scale(1.5); /* Increase size */
+}
+input[type="radio"]:focus {
+  outline: none;
 }
 
 fieldset {
-  width: 470px;
+  width: 457px;
+  height: 100px;
 }
 
-.X,
-.O {
+.X-selection,
+.O-selection {
+  display: flex;
+  gap: 14px;
+  color: #f9d459;
+}
+
+.X-container,
+.O-container {
   font-family: "Radio Canada", sans-serif;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f34954;
+  border-radius: 25px 25px 25px 25px;
+  font-size: 2.5rem;
+  font-weight: bolder;
 }
 
 .error {
@@ -100,8 +121,20 @@ fieldset {
   display: inline-block;
 }
 
-.buttons-form {
+.message {
+  width: 457px;
+  font-size: 0.9rem;
   text-align: center;
+  font-weight: bold;
+  font-family: monospace, sans-serif;
+}
+
+.buttons-form {
+  width: 457px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons-form > .submit-button {
@@ -254,6 +287,13 @@ fieldset {
   gap: 20px;
   font-weight: bolder;
   padding-top: 55px;
+}
+
+.player-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
 }
 
 .player-choice {
