@@ -394,8 +394,6 @@ const displayController = (() => {
         gameState.textContent = "draw match";
         nextRoundBtn.style.display = "block";
       } else {
-        //emptyGrid = [];
-
         gameState.textContent = "Player Turn";
         TicTacToeGrid.addEventListener("click", playerMove);
       }
@@ -440,8 +438,6 @@ const displayController = (() => {
         playerChoice.textContent
       );
       computer = createParticipant("Computer", computerChoice.textContent);
-      console.log(player.getName(), player.getSymbol());
-      console.log(computer.getName(), computer.getSymbol());
     }
   });
 
@@ -514,8 +510,5 @@ const displayController = (() => {
 })();
 
 const startTicTacToeGame = (() => {
-  // let player = null;
-  // let computer = null;
-
   modal.open();
 })();
