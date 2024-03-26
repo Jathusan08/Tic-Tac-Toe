@@ -2,7 +2,7 @@
 
 ## Preview
 
-<img src="image.png" alt="Tic Tac toe" width="800" height="550">
+<img src="image.png" alt="Tic Tac toe" width="550" height="550">
 ## Introduction
 
 This repository contains a simple implementation of the classic Tic Tac Toe game built using HTML, CSS, and JavaScript, as part of [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe/)'s curriculum. The game allows players to play against each other or against the computer.
