@@ -423,7 +423,7 @@ const displayController = (() => {
         gameState.textContent = "Computer Won";
         nextRoundBtn.style.display = "block";
       } else if (gameboard.isTicTaeBoardFilled()) {
-        gameState.textContent = "draw match";
+        gameState.textContent = "Draw Match";
         nextRoundBtn.style.display = "block";
         playerTurn = true;
       } else {
@@ -450,7 +450,7 @@ const displayController = (() => {
           TicTacToeGrid.removeEventListener("click", playerMove);
           nextRoundBtn.style.display = "block";
         } else if (gameboard.isTicTaeBoardFilled()) {
-          gameState.textContent = "draw match";
+          gameState.textContent = "Draw Match";
           nextRoundBtn.style.display = "block";
           playerTurn = false;
         } else {
@@ -536,7 +536,7 @@ const displayController = (() => {
     } else if (gameState.textContent === "Computer Won") {
       gameState.textContent = "Player Turn";
       TicTacToeGrid.addEventListener("click", playerMove);
-    } else if (gameState.textContent === "draw match") {
+    } else if (gameState.textContent === "Draw Match") {
       if (!playerTurn) {
         TicTacToeGrid.removeEventListener("click", playerMove);
         gameState.textContent = "Computer Turn";
